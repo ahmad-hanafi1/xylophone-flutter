@@ -12,103 +12,34 @@ class XylophoneApp extends StatelessWidget {
       await player.play(AssetSource(source));
     }
 
-    final player = AudioPlayer();
+    Widget BuildKey(Color color, String source) {
+      return Expanded(
+        child: TextButton(
+          style: TextButton.styleFrom(
+            backgroundColor: color,
+            padding: EdgeInsets.zero,
+            shape: RoundedRectangleBorder(side: BorderSide(width: 0)),
+          ),
+          child: Container(),
+          onPressed: () {
+            playNote(source);
+          },
+        ),
+      );
+    }
+
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(children: [
-            Expanded(
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  padding: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(side: BorderSide(width: 0)),
-                ),
-                child: Container(),
-                onPressed: () {
-                  playNote('assets/note1.wav');
-                },
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.orange,
-                  padding: EdgeInsets.all(0),
-                  shape: RoundedRectangleBorder(side: BorderSide(width: 0)),
-                ),
-                child: Container(),
-                onPressed: () async {
-                  playNote('assets/note2.wav');
-                },
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.yellow,
-                  padding: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(side: BorderSide(width: 0)),
-                ),
-                child: Container(),
-                onPressed: () async {
-                  playNote('assets/note3.wav');
-                },
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.green,
-                  padding: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(side: BorderSide(width: 0)),
-                ),
-                child: Container(),
-                onPressed: () async {
-                  playNote('assets/note4.wav');
-                },
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.teal,
-                  padding: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(side: BorderSide(width: 0)),
-                ),
-                child: Container(),
-                onPressed: () async {
-                  playNote('assets/note5.wav');
-                },
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  padding: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(side: BorderSide(width: 0)),
-                ),
-                child: Container(),
-                onPressed: () async {
-                  playNote('assets/note6.wav');
-                },
-              ),
-            ),
-            Expanded(
-              child: TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.purple,
-                  padding: EdgeInsets.zero,
-                  shape: RoundedRectangleBorder(side: BorderSide(width: 0)),
-                ),
-                child: Container(),
-                onPressed: () async {
-                  playNote('assets/note7.wav');
-                },
-              ),
-            ),
+            BuildKey(Colors.red, "assets/note1.wav"),
+            BuildKey(Colors.orange, "assets/note2.wav"),
+            BuildKey(Colors.yellow, "assets/note3.wav"),
+            BuildKey(Colors.green, "assets/note4.wav"),
+            BuildKey(Colors.teal, "assets/note5.wav"),
+            BuildKey(Colors.blue, "assets/note6.wav"),
+            BuildKey(Colors.purple, "assets/note7.wav"),
           ]),
         ),
       ),
