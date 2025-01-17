@@ -6,13 +6,13 @@ void main() => runApp(XylophoneApp());
 class XylophoneApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    void playNote(String source) async {
-      AudioCache.instance = AudioCache(prefix: '');
-      final player = AudioPlayer();
-      await player.play(AssetSource(source));
-    }
+    Widget BuildKey(Color color, int sourceNumber) {
+      void playNote() async {
+        AudioCache.instance = AudioCache(prefix: '');
+        final player = AudioPlayer();
+        await player.play(AssetSource("assets/note$sourceNumber.wav"));
+      }
 
-    Widget BuildKey(Color color, String source) {
       return Expanded(
         child: TextButton(
           style: TextButton.styleFrom(
@@ -22,7 +22,7 @@ class XylophoneApp extends StatelessWidget {
           ),
           child: Container(),
           onPressed: () {
-            playNote(source);
+            playNote();
           },
         ),
       );
@@ -33,13 +33,13 @@ class XylophoneApp extends StatelessWidget {
         backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(children: [
-            BuildKey(Colors.red, "assets/note1.wav"),
-            BuildKey(Colors.orange, "assets/note2.wav"),
-            BuildKey(Colors.yellow, "assets/note3.wav"),
-            BuildKey(Colors.green, "assets/note4.wav"),
-            BuildKey(Colors.teal, "assets/note5.wav"),
-            BuildKey(Colors.blue, "assets/note6.wav"),
-            BuildKey(Colors.purple, "assets/note7.wav"),
+            BuildKey(Colors.red, 1),
+            BuildKey(Colors.orange, 2),
+            BuildKey(Colors.yellow, 3),
+            BuildKey(Colors.green, 4),
+            BuildKey(Colors.teal, 5),
+            BuildKey(Colors.blue, 6),
+            BuildKey(Colors.purple, 7),
           ]),
         ),
       ),
